@@ -1,0 +1,356 @@
+{
+  "name": "better-vim",
+  "displayName": "Better Vim",
+  "publisher": "mcaragheorghe",
+  "author": {
+    "name": "mihaicaragheorghe",
+    "email": "mihaicaragheorghe96@gmail.com",
+    "url": "https://github.com/mihaicaragheorghe"
+  },
+  "description": "",
+  "license": "MIT",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.93.0"
+  },
+  "categories": [
+    "Keymaps",
+    "Other"
+  ],
+  "keywords": [
+    "keymap",
+    "keybindings",
+    "better",
+    "vim",
+    "neovim"
+  ],
+  "repository": {
+    "url": "https://github.com/mihaicaragheorghe/better-vscodevim"
+  },
+  "bugs": {
+    "url": "https://github.com/mihaicaragheorghe/better-vscodevim/issues"
+  },
+  "extensionDependencies": [
+    "vscodevim.vim"
+  ],
+  "extensionPack": [
+    "vscodevim.vim"
+  ],
+  "pricing": "Free",
+  "contributes": {
+    "configurationDefaults": {
+      "editor.lineNumbers": "relative",
+      "editor.cursorSurroundingLines": 10,
+      "vim.leader": "space",
+      "vim.useSystemClipboard": true,
+      "vim.replaceWithRegister": true,
+      "vim.highlightedyank.enable": true,
+      "vim.highlightedyank.color": "#a9dc7660",
+      "vim.useCtrlKeys": true,
+      "vim.easymotion": true,
+      "vim.incsearch": true,
+      "vim.hlsearch": true,
+      "vim.sneak": true,
+      "vim.handleKeys": {
+        "<C-space>": false,
+        "<C-e>": false,
+        "<C-h>": false,
+        "<C-j>": false,
+        "<C-k>": false,
+        "<C-l>": false,
+        "<C-d>": true
+      },
+      "vim.normalModeKeyBindingsNonRecursive": [
+        {
+          "before": ["<C-p>"],
+          "commands": ["workbench.action.quickOpen"]
+        },
+        {
+          "before": ["<leader>", "p"],
+          "commands": ["workbench.action.toggleSidebarVisibility"]
+        },
+        {
+          "before": ["tab"],
+          "commands": ["workbench.action.nextEditor"],
+          "when": "editorTextFocus"
+        },
+        {
+          "before": ["shift+tab"],
+          "commands": ["workbench.action.previousEditor"],
+          "when": "editorTextFocus"
+        },
+        {
+          "before": ["<leader>", "g", "e"],
+          "commands": ["workbench.view.explorer"]
+        },
+        {
+          "before": ["<leader>", "g", "f"],
+          "commands": ["workbench.action.findInFiles"]
+        },
+        {
+          "before": ["<leader>", "f"],
+          "commands": ["editor.action.formatDocument"]
+        },
+        {
+          "before": ["<leader>", "z", "z"],
+          "commands": ["workbench.action.toggleZenMode"]
+        },
+        {
+          "before": ["<leader>", "r", "n"],
+          "commands": ["editor.action.rename"]
+        },
+        {
+          "before": ["<Esc>"],
+          "commands": [":nohl"]
+        },
+        {
+          "before": ["<C-d>"],
+          "after": ["<C-d>", "z", "z"]
+        },
+        {
+          "before": ["<C-u>"],
+          "after": ["<C-u>", "z", "z"]
+        },
+        {
+          "before": ["n"],
+          "after": ["n", "z", "z"]
+        },
+        {
+          "before": ["N"],
+          "after": ["N", "z", "z"]
+        },
+        {
+          "before": ["K"],
+          "commands": ["editor.action.showDefinitionPreviewHover"]
+        },
+        {
+          "before": ["g", "q"],
+          "commands": ["editor.action.quickFix"]
+        },
+        {
+          "before": ["g", "d"],
+          "commands": ["editor.action.revealDefinition"]
+        },
+        {
+          "before": ["g", "D"],
+          "commands": ["editor.action.revealDeclaration"]
+        },
+        {
+          "before": ["g", "I"],
+          "commands": ["editor.action.goToImplementation"]
+        },
+        {
+          "before": ["g", "p", "I"],
+          "commands": ["editor.action.peekImplementation"]
+        },
+        {
+          "before": ["g", "p", "d"],
+          "commands": ["editor.action.peekDefinition"]
+        },
+        {
+          "before": ["g", "r"],
+          "commands": ["editor.action.referenceSearch.trigger"]
+        },
+        {
+          "before": ["g", "t"],
+          "commands": ["editor.action.goToTypeDefinition"]
+        },
+        {
+          "before": ["g", "p", "t"],
+          "commands": ["editor.action.peekTypeDefinition"]
+        },
+        {
+          "before": ["]", "d"],
+          "commands": ["editor.action.marker.next"],
+          "when": "editorFocus"
+        },
+        {
+          "before": ["[", "d"],
+          "commands": ["editor.action.marker.prev"],
+          "when": "editorFocus"
+        }
+      ],
+      "vim.visualModeKeyBindings": [
+        {
+          "before": ["<"],
+          "after": ["<", "g", "v", "^"]
+        },
+        {
+          "before": [">"],
+          "after": [">", "g", "v", "^"]
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "key": "ctrl+h",
+        "command": "workbench.action.navigateLeft"
+      },
+      {
+        "key": "ctrl+j",
+        "command": "workbench.action.navigateDown"
+      },
+      {
+        "key": "ctrl+j",
+        "command": "-workbench.action.togglePanel"
+      },
+      {
+        "key": "ctrl+k",
+        "command": "workbench.action.navigateUp"
+      },
+      {
+        "key": "ctrl+k",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+      },
+      {
+        "key": "ctrl+l",
+        "command": "workbench.action.navigateRight"
+      },
+      {
+        "key": "ctrl+l",
+        "when": "sideBarFocus",
+        "command": "workbench.action.focusActiveEditorGroup"
+      },
+      {
+        "key": "ctrl+n",
+        "command": "selectNextSuggestion",
+        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+      },
+      {
+        "key": "ctrl+p",
+        "command": "selectPrevSuggestion",
+        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+      },
+      {
+        "key": "ctrl+y",
+        "command": "acceptSelectedSuggestion",
+        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+      },
+      {
+        "key": "ctrl+n",
+        "command": "selectNextCodeAction",
+        "when": "codeActionMenuVisible"
+      },
+      {
+        "key": "ctrl+p",
+        "command": "selectPrevCodeAction",
+        "when": "codeActionMenuVisible"
+      },
+      {
+        "key": "ctrl+y",
+        "command": "acceptSelectedCodeAction",
+        "when": "codeActionMenuVisible"
+      },
+      {
+        "key": "ctrl+n",
+        "command": "workbench.action.quickOpenNavigateNext",
+        "when": "inQuickOpen"
+      },
+      {
+        "key": "ctrl+p",
+        "command": "workbench.action.quickOpenNavigatePrevious",
+        "when": "inQuickOpen"
+      },
+      {
+        "key": "h",
+        "command": "editor.action.scrollLeftHover",
+        "when": "editorHoverFocused"
+      },
+      {
+        "key": "j",
+        "command": "editor.action.scrollDownHover",
+        "when": "editorHoverFocused"
+      },
+      {
+        "key": "k",
+        "command": "editor.action.scrollUpHover",
+        "when": "editorHoverFocused"
+      },
+      {
+        "key": "l",
+        "command": "editor.action.scrollRightHover",
+        "when": "editorHoverFocused"
+      },
+      {
+        "key": "h",
+        "command": "list.collapse",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+      },
+      {
+        "key": "j",
+        "command": "list.focusDown",
+        "when": "listFocus && explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+      },
+      {
+        "key": "k",
+        "command": "list.focusUp",
+        "when": "listFocus && explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+      },
+      {
+        "key": "o",
+        "command": "list.toggleExpand",
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+      },
+      {
+        "key": "a",
+        "command": "explorer.newFile",
+        "when": "filesExplorerFocus && !inputFocus"
+      },
+      {
+        "key": "shift+a",
+        "command": "explorer.newFolder",
+        "when": "filesExplorerFocus && !inputFocus"
+      },
+      {
+        "key": "r",
+        "command": "renameFile",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+      },
+      {
+        "key": "enter",
+        "command": "list.select",
+        "when": "explorerViewletVisible && filesExplorerFocus"
+      },
+      {
+        "key": "enter",
+        "command": "-renameFile",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+      },
+      {
+        "key": "d",
+        "command": "deleteFile",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+      },
+      {
+        "key": "y",
+        "command": "filesExplorer.copy",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+      },
+      {
+        "key": "x",
+        "command": "filesExplorer.cut",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !inputFocus"
+      },
+      {
+        "key": "p",
+        "command": "filesExplorer.paste",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
+      },
+      {
+        "key": "v",
+        "command": "explorer.openToSide",
+        "when": "explorerViewletFocus && explorerViewletVisible && !inputFocus"
+      },
+      {
+        "key": "ctrl+n",
+        "command": "-workbench.action.files.newUntitledFile"
+      },
+      {
+        "key": "ctrl+w o",
+        "command": "workbench.action.toggleMaximizeEditorGroup",
+        "when": "editorPartMaximizedEditorGroup || editorPartMultipleEditorGroups"
+      }
+    ]
+  }
+}

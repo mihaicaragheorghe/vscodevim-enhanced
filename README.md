@@ -1,4 +1,3 @@
-# Better Vim Keymaps
+# Better Vim
 
 Work in progress
-# better-vim-keymaps
