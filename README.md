@@ -14,10 +14,25 @@ Relative lines are enabled by default.
 ```json
 {
   "vim.leader": "space",
+  "editor.lineNumbers": "relative",
+  "editor.cursorSurroundingLines": 10,
+  "vim.replaceWithRegister": true,
   "vim.highlightedyank.enable": true,
   "vim.highlightedyank.color": "#a9dc7660",
-  "editor.lineNumbers": "relative",
-  "editor.cursorSurroundingLines": 10
+  "vim.useCtrlKeys": true,
+  "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.hlsearch": true,
+  "vim.sneak": true,
+  "vim.handleKeys": {
+    "<C-space>": false,
+    "<C-e>": false,
+    "<C-h>": false,
+    "<C-j>": false,
+    "<C-k>": false,
+    "<C-l>": false,
+    "<C-d>": true
+  }
 }
 ```
 
