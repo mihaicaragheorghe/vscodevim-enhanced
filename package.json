@@ -9,7 +9,7 @@
   },
   "description": "Keymaps for VSCodeVim extension to provide a more native Vim experience in VS Code. Inspired by Neovim configurations. ",
   "license": "MIT",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "icon": "assets/logo.webp",
   "engines": {
     "vscode": "^1.93.0"
@@ -46,6 +46,8 @@
       "vim.replaceWithRegister": true,
       "vim.highlightedyank.enable": true,
       "vim.highlightedyank.color": "#a9dc7660",
+      "vim.sneakUseIgnorecaseAndSmartcase": true,
+      "vim.useSystemClipboard": false,
       "vim.useCtrlKeys": true,
       "vim.easymotion": true,
       "vim.incsearch": true,
@@ -58,6 +60,7 @@
         "<C-j>": false,
         "<C-k>": false,
         "<C-l>": false,
+        "<C-y>": false,
         "<C-d>": true
       },
       "vim.normalModeKeyBindingsNonRecursive": [
@@ -226,7 +229,7 @@
         {
           "before": [
             "g",
-            "q"
+            "."
           ],
           "commands": [
             "editor.action.quickFix"
@@ -419,7 +422,7 @@
       {
         "key": "ctrl+y",
         "command": "acceptSelectedSuggestion",
-        "when": "editorTextFocus && suggestWidgetMultipleSuggestions && suggestWidgetVisible"
+        "when": "suggestWidgetHasFocusedSuggestion && suggestWidgetVisible && textInputFocus"
       },
       {
         "key": "ctrl+n",

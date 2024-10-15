@@ -89,7 +89,7 @@ Additionally, `ctrl+d`, `ctrl+u`, `n` and `N`(when searching) will also center t
 | Key          | Description             |
 | ------------ | ----------------------- |
 | `K`          | Hover information       |
-| `gq`         | Quick fix               |
+| `g.`         | Quick fix               |
 | `gd`         | Go to definition        |
 | `gpd`        | Go peek definition      |
 | `gI`         | Go to implementation    |
