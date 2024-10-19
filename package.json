@@ -9,7 +9,7 @@
   },
   "description": "Keymaps for VSCodeVim extension to provide a more native Vim experience in VS Code. Inspired by Neovim configurations. ",
   "license": "MIT",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "icon": "assets/logo.webp",
   "engines": {
     "vscode": "^1.93.0"
@@ -61,320 +61,144 @@
         "<C-k>": false,
         "<C-l>": false,
         "<C-y>": false,
+        "<C-s>": false,
+        "<C-w>": false,
         "<C-d>": true
       },
       "vim.normalModeKeyBindingsNonRecursive": [
         {
-          "before": [
-            "<C-p>"
-          ],
-          "commands": [
-            "workbench.action.quickOpen"
-          ]
+          "before": [ "<C-p>" ],
+          "commands": [ "workbench.action.quickOpen" ]
         },
         {
-          "before": [
-            "<leader>",
-            "e"
-          ],
-          "commands": [
-            "workbench.action.toggleSidebarVisibility"
-          ]
+          "before": [ "<leader>", "e" ],
+          "commands": [ "workbench.action.toggleSidebarVisibility" ]
         },
         {
-          "before": [
-            "tab"
-          ],
-          "commands": [
-            "workbench.action.nextEditor"
-          ],
+          "before": [ "tab" ],
+          "commands": [ "workbench.action.nextEditor" ],
           "when": "editorTextFocus"
         },
         {
-          "before": [
-            "shift+tab"
-          ],
-          "commands": [
-            "workbench.action.previousEditor"
-          ],
+          "before": [ "shift+tab" ],
+          "commands": [ "workbench.action.previousEditor" ],
           "when": "editorTextFocus"
         },
         {
-          "before": [
-            "<leader>",
-            "g",
-            "e"
-          ],
-          "commands": [
-            "workbench.view.explorer"
-          ]
+          "before": [ "<leader>", "g", "e" ],
+          "commands": [ "workbench.view.explorer" ]
         },
         {
-          "before": [
-            "<leader>",
-            "g",
-            "f"
-          ],
-          "commands": [
-            "workbench.action.findInFiles"
-          ]
+          "before": [ "<leader>", "/" ],
+          "commands": [ "workbench.action.findInFiles" ]
         },
         {
-          "before": [
-            "<leader>",
-            "f"
-          ],
-          "commands": [
-            "editor.action.formatDocument"
-          ]
+          "before": [ "<leader>", "f" ],
+          "commands": [ "editor.action.formatDocument" ]
         },
         {
-          "before": [
-            "<leader>",
-            "z",
-            "z"
-          ],
-          "commands": [
-            "workbench.action.toggleZenMode"
-          ]
+          "before": [ "<leader>", "z", "z" ],
+          "commands": [ "workbench.action.toggleZenMode" ]
         },
         {
-          "before": [
-            "<leader>",
-            "r",
-            "n"
-          ],
-          "commands": [
-            "editor.action.rename"
-          ]
+          "before": [ "<leader>", "r" ],
+          "commands": [ "editor.action.rename" ]
         },
         {
-          "before": [
-            "<Esc>"
-          ],
-          "commands": [
-            ":nohl"
-          ]
+          "before": [ "<Esc>" ],
+          "commands": [ ":nohl" ]
         },
         {
-          "before": [
-            "<leader>",
-            "y"
-          ],
-          "after": [
-            "\"",
-            "+",
-            "y"
-          ]
+          "before": [ "<leader>", "y" ],
+          "after": [ "\"", "+", "y" ]
         },
         {
-          "before": [
-            "<leader>",
-            "p"
-          ],
-          "after": [
-            "\"",
-            "+",
-            "p"
-          ]
+          "before": [ "<leader>", "p" ],
+          "after": [ "\"", "+", "p" ]
         },
         {
-          "before": [
-            "<C-d>"
-          ],
-          "after": [
-            "<C-d>",
-            "z",
-            "z"
-          ]
+          "before": [ "<C-d>" ],
+          "after": [ "<C-d>", "z", "z" ]
         },
         {
-          "before": [
-            "<C-u>"
-          ],
-          "after": [
-            "<C-u>",
-            "z",
-            "z"
-          ]
+          "before": [ "<C-u>" ],
+          "after": [ "<C-u>", "z", "z" ]
         },
         {
-          "before": [
-            "n"
-          ],
-          "after": [
-            "n",
-            "z",
-            "z"
-          ]
+          "before": [ "n" ],
+          "after": [ "n", "z", "z" ]
         },
         {
-          "before": [
-            "N"
-          ],
-          "after": [
-            "N",
-            "z",
-            "z"
-          ]
+          "before": [ "N" ],
+          "after": [ "N", "z", "z" ]
         },
         {
-          "before": [
-            "K"
-          ],
-          "commands": [
-            "editor.action.showDefinitionPreviewHover"
-          ]
+          "before": [ "K" ],
+          "commands": [ "editor.action.showDefinitionPreviewHover" ]
         },
         {
-          "before": [
-            "g",
-            "."
-          ],
-          "commands": [
-            "editor.action.quickFix"
-          ]
+          "before": [ "g", "." ],
+          "commands": [ "editor.action.quickFix" ]
         },
         {
-          "before": [
-            "g",
-            "d"
-          ],
-          "commands": [
-            "editor.action.revealDefinition"
-          ]
+          "before": [ "g", "d" ],
+          "commands": [ "editor.action.revealDefinition" ]
         },
         {
-          "before": [
-            "g",
-            "D"
-          ],
-          "commands": [
-            "editor.action.revealDeclaration"
-          ]
+          "before": [ "g", "p", "d" ],
+          "commands": [ "editor.action.peekDefinition" ]
         },
         {
-          "before": [
-            "g",
-            "I"
-          ],
-          "commands": [
-            "editor.action.goToImplementation"
-          ]
+          "before": [ "g", "I" ],
+          "commands": [ "editor.action.goToImplementation" ]
         },
         {
-          "before": [
-            "g",
-            "p",
-            "I"
-          ],
-          "commands": [
-            "editor.action.peekImplementation"
-          ]
+          "before": [ "g", "p", "I" ],
+          "commands": [ "editor.action.peekImplementation" ]
         },
         {
-          "before": [
-            "g",
-            "p",
-            "d"
-          ],
-          "commands": [
-            "editor.action.peekDefinition"
-          ]
+          "before": [ "g", "D" ],
+          "commands": [ "editor.action.revealDeclaration" ]
         },
         {
-          "before": [
-            "g",
-            "r"
-          ],
-          "commands": [
-            "editor.action.referenceSearch.trigger"
-          ]
+          "before": [ "g", "r" ],
+          "commands": [ "editor.action.referenceSearch.trigger" ]
         },
         {
-          "before": [
-            "g",
-            "t"
-          ],
-          "commands": [
-            "editor.action.goToTypeDefinition"
-          ]
+          "before": [ "g", "t" ],
+          "commands": [ "editor.action.goToTypeDefinition" ]
         },
         {
-          "before": [
-            "g",
-            "p",
-            "t"
-          ],
-          "commands": [
-            "editor.action.peekTypeDefinition"
-          ]
+          "before": [ "g", "p", "t" ],
+          "commands": [ "editor.action.peekTypeDefinition" ]
         },
         {
-          "before": [
-            "]",
-            "d"
-          ],
-          "commands": [
-            "editor.action.marker.next"
-          ],
+          "before": [ "]", "d" ],
+          "commands": [ "editor.action.marker.next" ],
           "when": "editorFocus"
         },
         {
-          "before": [
-            "[",
-            "d"
-          ],
-          "commands": [
-            "editor.action.marker.prev"
-          ],
+          "before": [ "[", "d" ],
+          "commands": [ "editor.action.marker.prev" ],
           "when": "editorFocus"
         }
       ],
       "vim.visualModeKeyBindings": [
         {
-          "before": [
-            "<leader>",
-            "y"
-          ],
-          "after": [
-            "\"",
-            "+",
-            "y"
-          ]
+          "before": [ "<leader>", "y" ],
+          "after": [ "\"", "+", "y" ]
         },
         {
-          "before": [
-            "<leader>",
-            "p"
-          ],
-          "after": [
-            "\"",
-            "+",
-            "p"
-          ]
+          "before": [ "<leader>", "p" ],
+          "after": [ "\"", "+", "p" ]
         },
         {
-          "before": [
-            "<"
-          ],
-          "after": [
-            "<",
-            "g",
-            "v",
-            "^"
-          ]
+          "before": [ "<" ],
+          "after": [ "<", "g", "v", "^" ]
         },
         {
-          "before": [
-            ">"
-          ],
-          "after": [
-            ">",
-            "g",
-            "v",
-            "^"
-          ]
+          "before": [ ">" ],
+          "after": [ ">", "g", "v", "^" ]
         }
       ]
     },
@@ -502,16 +326,6 @@
       {
         "key": "r",
         "command": "renameFile",
-        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
-      },
-      {
-        "key": "enter",
-        "command": "list.select",
-        "when": "explorerViewletVisible && filesExplorerFocus"
-      },
-      {
-        "key": "enter",
-        "command": "-renameFile",
         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
       },
       {

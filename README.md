@@ -31,8 +31,11 @@ Relative lines are enabled by default.
     "<C-j>": false,
     "<C-k>": false,
     "<C-l>": false,
+    "<C-y>": false,
+    "<C-s>": false,
+    "<C-w>": false,
     "<C-d>": true
-  }
+  },
 }
 ```
 
@@ -81,25 +84,24 @@ Additionally, `ctrl+d`, `ctrl+u`, `n` and `N`(when searching) will also center t
 | `y`          | Copy file             |
 | `p`          | Paste file            |
 | `r`          | Rename file           |
-| `enter`      | Select file           |
 | `v`          | Open file to the side |
 
-## Code Features
+## LSP
 
-| Key          | Description             |
-| ------------ | ----------------------- |
-| `K`          | Hover information       |
-| `g.`         | Quick fix               |
-| `gd`         | Go to definition        |
-| `gpd`        | Go peek definition      |
-| `gI`         | Go to implementation    |
-| `gpI`        | Go peek implementation  |
-| `gr`         | Go to reference         |
-| `gD`         | Go to declaration       |
-| `gt`         | Go to type definition   |
-| `gpt`        | Go peek type definition |
-| `<leader>rn` | Rename                  |
-| `<leader>f`  | Format                  |
+| Key         | Description             |
+| ----------- | ----------------------- |
+| `K`         | Hover information       |
+| `g.`        | Quick fix               |
+| `gd`        | Go to definition        |
+| `gpd`       | Go peek definition      |
+| `gI`        | Go to implementation    |
+| `gpI`       | Go peek implementation  |
+| `gr`        | Go to reference         |
+| `gD`        | Go to declaration       |
+| `gt`        | Go to type definition   |
+| `gpt`       | Go peek type definition |
+| `<leader>r` | Rename                  |
+| `<leader>f` | Format                  |
 
 ## Editor Commands
 
