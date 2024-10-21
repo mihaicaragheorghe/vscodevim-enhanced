@@ -9,7 +9,7 @@
   },
   "description": "Keymaps for VSCodeVim extension to provide a more native Vim experience in VS Code. Inspired by Neovim configurations. ",
   "license": "MIT",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "icon": "assets/logo.webp",
   "engines": {
     "vscode": "^1.93.0"

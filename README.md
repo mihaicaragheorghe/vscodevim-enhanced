@@ -109,7 +109,7 @@ Additionally, `ctrl+d`, `ctrl+u`, `n` and `N`(when searching) will also center t
 | ------------ | ----------------- |
 | `<leader>e`  | Hide/show sidebar |
 | `<leader>ge` | Open explorer     |
-| `<leader>gf` | Find in files     |
+| `<leader>/` | Find in files     |
 | `<leader>zz` | Zen Mode          |
 
 ## Suggestions
