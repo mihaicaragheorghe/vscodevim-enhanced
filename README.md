@@ -15,12 +15,11 @@ Relative lines are enabled by default.
 {
   "vim.leader": "space",
   "editor.lineNumbers": "relative",
-  "editor.cursorSurroundingLines": 10,
+  "editor.cursorSurroundingLines": 8,
   "vim.replaceWithRegister": true,
   "vim.highlightedyank.enable": true,
   "vim.highlightedyank.color": "#a9dc7660",
   "vim.useCtrlKeys": true,
-  "vim.easymotion": true,
   "vim.incsearch": true,
   "vim.hlsearch": true,
   "vim.sneak": true,
@@ -51,7 +50,8 @@ The mapping configuration uses the nvim name shortcuts as:
 ### Workspace Navigation
 
 Use `ctrl` and `hjkl` to move the editor focus. This works for both splitted windows and things like file explorer, terminal, etc.
-Additionaly, use `tab` and `shift+tab` to move between editor tabs.
+Use `tab` and `shift+tab` to move between editor tabs.
+Use `hjkl` to move in hover windows and file explorer.
 
 | Key       | Description             |
 | --------- | ----------------------- |
@@ -109,8 +109,9 @@ Additionally, `ctrl+d`, `ctrl+u`, `n` and `N`(when searching) will also center t
 | ------------ | ----------------- |
 | `<leader>e`  | Hide/show sidebar |
 | `<leader>ge` | Open explorer     |
-| `<leader>/` | Find in files     |
+| `<leader>/`  | Find in files     |
 | `<leader>zz` | Zen Mode          |
+| `<leader>w`  | Save file         |
 
 ## Suggestions
 
@@ -126,3 +127,5 @@ Additionally, `ctrl+d`, `ctrl+u`, `n` and `N`(when searching) will also center t
 | ----------- | --------------------------- |
 | `<leader>y` | Copy into system clipboard  |
 | `<leader>p` | Paste from system clipboard |
+
+*if system clipboard is disabled*

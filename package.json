@@ -9,7 +9,7 @@
   },
   "description": "Keymaps for VSCodeVim extension to provide a more native Vim experience in VS Code. Inspired by Neovim configurations. ",
   "license": "MIT",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "icon": "assets/logo.webp",
   "engines": {
     "vscode": "^1.93.0"
@@ -42,14 +42,12 @@
     "configurationDefaults": {
       "vim.leader": "space",
       "editor.lineNumbers": "relative",
-      "editor.cursorSurroundingLines": 10,
+      "editor.cursorSurroundingLines": 8,
       "vim.replaceWithRegister": true,
       "vim.highlightedyank.enable": true,
       "vim.highlightedyank.color": "#a9dc7660",
       "vim.sneakUseIgnorecaseAndSmartcase": true,
-      "vim.useSystemClipboard": false,
       "vim.useCtrlKeys": true,
-      "vim.easymotion": true,
       "vim.incsearch": true,
       "vim.hlsearch": true,
       "vim.sneak": true,
@@ -180,6 +178,11 @@
         {
           "before": [ "[", "d" ],
           "commands": [ "editor.action.marker.prev" ],
+          "when": "editorFocus"
+        },
+        {
+          "before": [ "<leader>", "w" ],
+          "commands": [ "workbench.action.files.save" ],
           "when": "editorFocus"
         }
       ],
