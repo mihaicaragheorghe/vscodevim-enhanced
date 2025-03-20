@@ -23,18 +23,6 @@ Relative lines are enabled by default.
   "vim.incsearch": true,
   "vim.hlsearch": true,
   "vim.sneak": true,
-  "vim.handleKeys": {
-    "<C-space>": false,
-    "<C-e>": false,
-    "<C-h>": false,
-    "<C-j>": false,
-    "<C-k>": false,
-    "<C-l>": false,
-    "<C-y>": false,
-    "<C-s>": false,
-    "<C-w>": false,
-    "<C-d>": true
-  },
 }
 ```
 

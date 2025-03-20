@@ -9,7 +9,7 @@
   },
   "description": "Keymaps for VSCodeVim extension to provide a more native Vim experience in VS Code. Inspired by Neovim configurations. ",
   "license": "MIT",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "icon": "assets/logo.webp",
   "engines": {
     "vscode": "^1.93.0"
@@ -53,15 +53,11 @@
       "vim.sneak": true,
       "vim.handleKeys": {
         "<C-space>": false,
-        "<C-e>": false,
         "<C-h>": false,
         "<C-j>": false,
         "<C-k>": false,
         "<C-l>": false,
-        "<C-y>": false,
-        "<C-s>": false,
-        "<C-w>": false,
-        "<C-d>": true
+        "<C-s>": false
       },
       "vim.normalModeKeyBindingsNonRecursive": [
         {
