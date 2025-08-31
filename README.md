@@ -14,15 +14,19 @@ Relative lines are enabled by default.
 ```json
 {
   "vim.leader": "space",
+  "vim.showcmd": true,
+  "vim.showmodename": true,
   "editor.lineNumbers": "relative",
-  "editor.cursorSurroundingLines": 8,
-  "vim.replaceWithRegister": true,
+  "editor.cursorSurroundingLines": 10,
   "vim.highlightedyank.enable": true,
   "vim.highlightedyank.color": "#a9dc7660",
-  "vim.useCtrlKeys": true,
+  "vim.ignorecase": true,
+  "vim.smartcase": true,
   "vim.incsearch": true,
   "vim.hlsearch": true,
-  "vim.sneak": true,
+  "vim.inccommand": "replace",
+  "vim.replaceWithRegister": true,
+  "vim.useCtrlKeys": true,
 }
 ```
 
@@ -41,65 +45,71 @@ Use `ctrl` and `hjkl` to move the editor focus. This works for both splitted win
 Use `tab` and `shift+tab` to move between editor tabs.
 Use `hjkl` to move in hover windows and file explorer.
 
-| Key       | Description             |
-| --------- | ----------------------- |
-| `<C-p>`   | Go to file              |
-| `<C-h>`   | Move focus left         |
-| `<C-j>`   | Move focus down         |
-| `<C-k>`   | Move focus up           |
-| `<C-l>`   | Move focus right        |
-| `tab`     | Cycle next editor       |
-| `<S-tab>` | Cycle previous editor   |
-| `<C-w>o`  | Maximize focused editor |
-| `]d`      | Go to next diagnostic   |
-| `[d`      | Go to prev diagnostic   |
+| Key                    | Description              |
+| ---------------------- | ------------------------ |
+| `<leader>sf` / `<C-p>` | Go to file               |
+| `<leader>ss`           | Go to symbol             |
+| `<leader>/`            | Search in files          |
+| `<C-h>`                | Move focus left          |
+| `<C-j>`                | Move focus down          |
+| `<C-k>`                | Move focus up            |
+| `<C-l>`                | Move focus right         |
+| `tab`                  | Cycle next editor        |
+| `<S-tab>`              | Cycle previous editor    |
+| `<C-w>o`               | Maximize focused editor  |
+| `]d`                   | Go to next diagnostic    |
+| `[d`                   | Go to prev diagnostic    |
+| `<leader>ge`           | Open file explorer       |
+| `<leader>gs`           | Open source control menu |
+| `<leader>gd`           | Open debug menu          |
+| `<leader>tt`           | Open problems menu       |
+| ``<C-`>``              | Open terminal            |
 
 Additionally, `ctrl+d`, `ctrl+u`, `n` and `N`(when searching) will also center the screen on jumps.
 
+## Editor Commands
+
+| Key                | Description          |
+| ------------------ | -------------------- |
+| `<leader><leader>` | Show command palette |
+| `<leader>e`        | Hide/show sidebar    |
+| `<leader>zz`       | Zen Mode             |
+| `<leader>w`        | Save file            |
+
 ### File Explorer and File Navigation
 
-| Key          | Description           |
-| ------------ | --------------------- |
-| `<leader>ge` | Open explorer         |
-| `h`          | Collapse directory    |
-| `l`          | Expand directory      |
-| `j`          | Move down             |
-| `k`          | Move up               |
-| `a`          | Add new file          |
-| `<S-a>`      | Add new directory     |
-| `d`          | Delete file           |
-| `x`          | Cut file              |
-| `y`          | Copy file             |
-| `p`          | Paste file            |
-| `r`          | Rename file           |
-| `v`          | Open file to the side |
+| Key          | Description              |
+| ------------ | ------------------------ |
+| `<leader>ge` | Open explorer            |
+| `h`          | Collapse directory       |
+| `l`          | Expand directory         |
+| `j`          | Move down                |
+| `k`          | Move up                  |
+| `a` / `%`    | Add new file             |
+| `A` / `<d>`  | Add new directory        |
+| `D`          | Delete file  / directory |
+| `x`          | Cut file                 |
+| `y`          | Copy file                |
+| `p`          | Paste file               |
+| `r`          | Rename file              |
+| `v`          | Open file to the side    |
 
 ## LSP
 
-| Key         | Description             |
-| ----------- | ----------------------- |
-| `K`         | Hover information       |
-| `g.`        | Quick fix               |
-| `gd`        | Go to definition        |
-| `gpd`       | Go peek definition      |
-| `gI`        | Go to implementation    |
-| `gpI`       | Go peek implementation  |
-| `gr`        | Go to reference         |
-| `gD`        | Go to declaration       |
-| `gt`        | Go to type definition   |
-| `gpt`       | Go peek type definition |
-| `<leader>r` | Rename                  |
-| `<leader>f` | Format                  |
-
-## Editor Commands
-
-| Key          | Description       |
-| ------------ | ----------------- |
-| `<leader>e`  | Hide/show sidebar |
-| `<leader>ge` | Open explorer     |
-| `<leader>/`  | Find in files     |
-| `<leader>zz` | Zen Mode          |
-| `<leader>w`  | Save file         |
+| Key                    | Description             |
+| ---------------------- | ----------------------- |
+| `K`                    | Hover information       |
+| `gd`                   | Go to definition        |
+| `gpd`                  | Go peek definition      |
+| `gI`                   | Go to implementation    |
+| `gpI`                  | Go peek implementation  |
+| `gr`                   | Go to reference         |
+| `gD`                   | Go to declaration       |
+| `gt`                   | Go to type definition   |
+| `gpt`                  | Go peek type definition |
+| `<leader>r`            | Rename                  |
+| `<leader>f`            | Format                  |
+| `<C-.>` / `<leader>ca` | Quick fix               |
 
 ## Suggestions
 
@@ -108,12 +118,24 @@ Additionally, `ctrl+d`, `ctrl+u`, `n` and `N`(when searching) will also center t
 | `<C-n>` | Select next suggestion     |
 | `<C-p>` | Select prev suggestion     |
 | `<C-y>` | Accept selected suggestion |
+| `<C-p>` | Toggle parameter hints     |
+
+*Parameter hints will be displayed only if no suggestion widget is visible (to avoid conflict with suggestions selection)*
 
 ## Clipboard
 
-| Key         | Description                 |
-| ----------- | --------------------------- |
-| `<leader>y` | Copy into system clipboard  |
-| `<leader>p` | Paste from system clipboard |
+| Key          | Description                    |
+| ------------ | ------------------------------ |
+| `<leader>y`  | Copy into system clipboard     |
+| `<leader>p`  | Paste from system clipboard    |
+| `<leader>d`  | Delete into void register      |
+| `<leader>dd` | Delete line into void register |
 
-*if system clipboard is disabled*
+## Text manipulation
+
+*In visual mode*
+
+| Key | Description            |
+| --- | ---------------------- |
+| `K` | Move current line up   |
+| `J` | Move current line down |

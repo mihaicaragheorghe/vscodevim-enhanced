@@ -9,7 +9,7 @@
   },
   "description": "Keymaps for VSCodeVim extension to provide a more native Vim experience in VS Code. Inspired by Neovim configurations. ",
   "license": "MIT",
-  "version": "0.0.10",
+  "version": "1.0.0",
   "icon": "assets/logo.png",
   "engines": {
     "vscode": "^1.93.0"
@@ -41,16 +41,19 @@
   "contributes": {
     "configurationDefaults": {
       "vim.leader": "space",
+      "vim.showcmd": true,
+      "vim.showmodename": true,
       "editor.lineNumbers": "relative",
-      "editor.cursorSurroundingLines": 8,
-      "vim.replaceWithRegister": true,
+      "editor.cursorSurroundingLines": 10,
       "vim.highlightedyank.enable": true,
       "vim.highlightedyank.color": "#a9dc7660",
-      "vim.sneakUseIgnorecaseAndSmartcase": true,
-      "vim.useCtrlKeys": true,
+      "vim.ignorecase": true,
+      "vim.smartcase": true,
       "vim.incsearch": true,
       "vim.hlsearch": true,
-      "vim.sneak": true,
+      "vim.inccommand": "replace",
+      "vim.replaceWithRegister": true,
+      "vim.useCtrlKeys": true,
       "vim.handleKeys": {
         "<C-space>": false,
         "<C-h>": false,
@@ -63,7 +66,8 @@
       "vim.normalModeKeyBindingsNonRecursive": [
         {
           "before": [ "<C-p>" ],
-          "commands": [ "workbench.action.quickOpen" ]
+          "commands": [ "workbench.action.quickOpen" ],
+          "when": "!suggestWidgetVisible && editorHasSignatureHelpProvider && editorTextFocus"
         },
         {
           "before": [ "<leader>", "e" ],
@@ -82,10 +86,6 @@
         {
           "before": [ "<leader>", "g", "e" ],
           "commands": [ "workbench.view.explorer" ]
-        },
-        {
-          "before": [ "<leader>", "/" ],
-          "commands": [ "workbench.action.findInFiles" ]
         },
         {
           "before": [ "<leader>", "f" ],
@@ -108,10 +108,6 @@
           "after": [ "\"", "+", "y" ]
         },
         {
-          "before": [ "<leader>", "p" ],
-          "after": [ "\"", "+", "p" ]
-        },
-        {
           "before": [ "<C-d>" ],
           "after": [ "<C-d>", "z", "z" ]
         },
@@ -128,12 +124,38 @@
           "after": [ "N", "z", "z" ]
         },
         {
+          "before": [ "<leader>", "d" ],
+          "after": [ "\"", "_", "d" ]
+        },
+        {
+          "before": [ "x" ],
+          "after": [ "\"", "_", "x" ]
+        },
+        {
+          "before": [ "<leader>", "y" ],
+          "after": [ "\"", "+", "y" ]
+        },
+        {
+          "before": [ "<leader>", "Y" ],
+          "after": [ "\"", "+", "Y" ]
+        },
+        {
+          "before": [ "<leader>", "p" ],
+          "after": [ "\"", "+", "p" ]
+        },
+        {
           "before": [ "K" ],
           "commands": [ "editor.action.showDefinitionPreviewHover" ]
         },
         {
-          "before": [ "g", "." ],
-          "commands": [ "editor.action.quickFix" ]
+          "before": [ "<leader>", "c", "a" ],
+          "commands": [ "editor.action.quickFix" ],
+          "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
+        },
+        {
+          "before": [ "<C-.>" ],
+          "commands": [ "editor.action.quickFix" ],
+          "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
         },
         {
           "before": [ "g", "d" ],
@@ -181,6 +203,43 @@
           "before": [ "<leader>", "w" ],
           "commands": [ "workbench.action.files.save" ],
           "when": "editorFocus"
+        },
+        {
+          "before": [ "<leader>", "<leader>" ],
+          "commands": [ "workbench.action.showCommands" ]
+        },
+        {
+          "before": [ "<leader>", "s", "f" ],
+          "commands": [ "workbench.action.quickOpen" ]
+        },
+        {
+          "before": [ "<leader>", "s", "s" ],
+          "commands": [ "workbench.action.gotoSymbol" ],
+          "when": "!accessibilityHelpIsShown && !accessibleViewIsShown"
+        },
+        {
+          "before": [ "<leader>", "/" ],
+          "commands": [ "workbench.action.findInFiles" ]
+        },
+        {
+          "before": [ "<leader>", "g", "d" ],
+          "commands": [ "workbench.view.debug" ],
+          "when": "viewContainer.workbench.view.debug.enabled"
+        },
+        {
+          "before": [ "<leader>", "g", "s" ],
+          "commands": [ "workbench.view.scm" ],
+          "when": "workbench.scm.active"
+        },
+        {
+          "before": [ "<leader>", "t", "t" ],
+          "commands": [ "workbench.actions.view.problems" ],
+          "when": "workbench.panel.markers.view.active"
+        },
+        {
+          "before": [ "<C-`>" ],
+          "commands": [ "workbench.action.terminal.toggleTerminal" ],
+          "when": "terminal.active"
         }
       ],
       "vim.visualModeKeyBindings": [
@@ -189,8 +248,20 @@
           "after": [ "\"", "+", "y" ]
         },
         {
+          "before": [ "<leader>", "d" ],
+          "after": [ "\"", "_", "d" ]
+        },
+        {
           "before": [ "<leader>", "p" ],
-          "after": [ "\"", "+", "p" ]
+          "after": [ "\"", "_", "d", "P" ]
+        },
+        {
+          "before": [ "J" ],
+          "after": [ ":", "m", " ", "'", ">", "+", "1", "<CR>", "V"]
+        },
+        {
+          "before": [ "K" ],
+          "after": [ ":", "m", " ", "'", ">", "-", "2", "<CR>", "V"]
         },
         {
           "before": [ "<" ],
@@ -199,6 +270,12 @@
         {
           "before": [ ">" ],
           "after": [ ">", "g", "v", "^" ]
+        }
+      ],
+      "vim.insertModeKeyBindings": [
+        {
+          "before": [ "<C-p>" ],
+          "commands": [ "editor.action.triggerParameterHints" ]
         }
       ]
     },
@@ -319,7 +396,17 @@
         "when": "filesExplorerFocus && !inputFocus"
       },
       {
+        "key": "%",
+        "command": "explorer.newFile",
+        "when": "filesExplorerFocus && !inputFocus"
+      },
+      {
         "key": "shift+a",
+        "command": "explorer.newFolder",
+        "when": "filesExplorerFocus && !inputFocus"
+      },
+      {
+        "key": "d",
         "command": "explorer.newFolder",
         "when": "filesExplorerFocus && !inputFocus"
       },
@@ -329,7 +416,7 @@
         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
       },
       {
-        "key": "d",
+        "key": "D",
         "command": "deleteFile",
         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
       },
