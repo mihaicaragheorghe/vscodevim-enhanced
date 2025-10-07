@@ -86,12 +86,12 @@ Additionally, `ctrl+d`, `ctrl+u`, `n` and `N`(when searching) will also center t
 | `j`          | Move down                |
 | `k`          | Move up                  |
 | `a` / `%`    | Add new file             |
-| `A` / `<d>`  | Add new directory        |
+| `A` / `d`    | Add new directory        |
+| `r` / `R`    | Rename file              |
 | `D`          | Delete file  / directory |
 | `x`          | Cut file                 |
 | `y`          | Copy file                |
 | `p`          | Paste file               |
-| `r`          | Rename file              |
 | `v`          | Open file to the side    |
 
 ## LSP

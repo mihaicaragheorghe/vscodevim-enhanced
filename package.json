@@ -9,7 +9,7 @@
   },
   "description": "Keymaps for VSCodeVim extension to provide a more native Vim experience in VS Code. Inspired by Neovim configurations. ",
   "license": "MIT",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "icon": "assets/logo.png",
   "engines": {
     "vscode": "^1.93.0"
@@ -275,7 +275,8 @@
       "vim.insertModeKeyBindings": [
         {
           "before": [ "<C-p>" ],
-          "commands": [ "editor.action.triggerParameterHints" ]
+          "commands": [ "editor.action.triggerParameterHints" ],
+          "when": "editorHasSignatureHelpProvider && editorTextFocus"
         }
       ]
     },
@@ -416,7 +417,12 @@
         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
       },
       {
-        "key": "D",
+        "key": "shift+r",
+        "command": "renameFile",
+        "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+      },
+      {
+        "key": "shift+d",
         "command": "deleteFile",
         "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceReadonly && !inputFocus"
       },
