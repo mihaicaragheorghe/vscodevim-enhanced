@@ -62,7 +62,6 @@ Use `hjkl` to move in hover windows and file explorer.
 | `<leader>ge`           | Open file explorer       |
 | `<leader>gs`           | Open source control menu |
 | `<leader>gd`           | Open debug menu          |
-| `<leader>tt`           | Open problems menu       |
 | ``<C-`>``              | Open terminal            |
 
 Additionally, `ctrl+d`, `ctrl+u`, `n` and `N`(when searching) will also center the screen on jumps.
