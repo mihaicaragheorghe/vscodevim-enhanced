@@ -45,24 +45,24 @@ Use `ctrl` and `hjkl` to move the editor focus. This works for both splitted win
 Use `tab` and `shift+tab` to move between editor tabs.
 Use `hjkl` to move in hover windows and file explorer.
 
-| Key                    | Description              |
-| ---------------------- | ------------------------ |
-| `<leader>sf` / `<C-p>` | Go to file               |
-| `<leader>ss`           | Go to symbol             |
-| `<leader>/`            | Search in files          |
-| `<C-h>`                | Move focus left          |
-| `<C-j>`                | Move focus down          |
-| `<C-k>`                | Move focus up            |
-| `<C-l>`                | Move focus right         |
-| `tab`                  | Cycle next editor        |
-| `<S-tab>`              | Cycle previous editor    |
-| `<C-w>o`               | Maximize focused editor  |
-| `]d`                   | Go to next diagnostic    |
-| `[d`                   | Go to prev diagnostic    |
-| `<leader>ge`           | Open file explorer       |
-| `<leader>gs`           | Open source control menu |
-| `<leader>gd`           | Open debug menu          |
-| ``<C-`>``              | Open terminal            |
+| Key                    | Description                     |
+| ---------------------- | ------------------------------- |
+| `<leader>sf` / `<C-p>` | [S]earch [f]ile                 |
+| `<leader>ss`           | [S]earch [s]ymbol               |
+| `<leader>/`            | Search in files                 |
+| `<C-h>`                | Move focus left                 |
+| `<C-j>`                | Move focus down                 |
+| `<C-k>`                | Move focus up                   |
+| `<C-l>`                | Move focus right                |
+| `tab`                  | Next tab                        |
+| `<S-tab>`              | Previous tab                    |
+| `<C-w>o`               | Maximize / minimize focused tab |
+| `]d`                   | Go to next diagnostic           |
+| `[d`                   | Go to prev diagnostic           |
+| `<leader>ge`           | Open file explorer              |
+| `<leader>gs`           | Open source control menu        |
+| `<leader>gd`           | Open debug menu                 |
+| ``<C-`>``              | Open terminal                   |
 
 Additionally, `ctrl+d`, `ctrl+u`, `n` and `N`(when searching) will also center the screen on jumps.
 
@@ -77,21 +77,21 @@ Additionally, `ctrl+d`, `ctrl+u`, `n` and `N`(when searching) will also center t
 
 ### File Explorer and File Navigation
 
-| Key          | Description              |
-| ------------ | ------------------------ |
-| `<leader>ge` | Open explorer            |
-| `h`          | Collapse directory       |
-| `l`          | Expand directory         |
-| `j`          | Move down                |
-| `k`          | Move up                  |
-| `a` / `%`    | Add new file             |
-| `A` / `d`    | Add new directory        |
-| `r` / `R`    | Rename file              |
-| `D`          | Delete file  / directory |
-| `x`          | Cut file                 |
-| `y`          | Copy file                |
-| `p`          | Paste file               |
-| `v`          | Open file to the side    |
+| Key          | Description             |
+| ------------ | ----------------------- |
+| `<leader>ge` | Open explorer           |
+| `h`          | Collapse directory      |
+| `l`          | Expand directory        |
+| `j`          | Move down               |
+| `k`          | Move up                 |
+| `a` / `%`    | Add new file            |
+| `A` / `d`    | Add new directory       |
+| `r` / `R`    | Rename file             |
+| `D`          | Delete file / directory |
+| `x`          | Cut file                |
+| `y`          | Copy file               |
+| `p`          | Paste file              |
+| `v`          | Open file to the side   |
 
 ## LSP
 
@@ -112,29 +112,37 @@ Additionally, `ctrl+d`, `ctrl+u`, `n` and `N`(when searching) will also center t
 
 ## Suggestions
 
-| Key     | Description                |
-| ------- | -------------------------- |
-| `<C-n>` | Select next suggestion     |
-| `<C-p>` | Select prev suggestion     |
-| `<C-y>` | Accept selected suggestion |
-| `<C-p>` | Toggle parameter hints     |
+| Key         | Description                |
+| ----------- | -------------------------- |
+| `<C-n>`     | Select next suggestion     |
+| `<C-p>`     | Select prev suggestion     |
+| `<C-y>`     | Accept selected suggestion |
+| `<C-p>`     | Toggle parameter hints     |
+| `<C-Space>` | Toggle completion          |
 
-*Parameter hints will be displayed only if no suggestion widget is visible (to avoid conflict with suggestions selection)*
+*Parameter hints will be displayed only if no suggestion widget is visible (to avoid conflict with suggestions selection), they can also be triggered using the default vscode keybinding, `ctrl+shift+space` / `cmd+shift+space`
 
 ## Clipboard
 
-| Key          | Description                    |
-| ------------ | ------------------------------ |
-| `<leader>y`  | Copy into system clipboard     |
-| `<leader>p`  | Paste from system clipboard    |
-| `<leader>d`  | Delete into void register      |
-| `<leader>dd` | Delete line into void register |
+| Key          | Description                     |
+| ------------ | ------------------------------- |
+| `<leader>y`  | Copy into system clipboard      |
+| `<leader>yy` | Copy line into system clipboard |
+| `<leader>Y`  | Copy line into system clipboard |
+| `<leader>p`  | Paste from system clipboard     |
+| `<leader>d`  | Delete into void register       |
+| `<leader>dd` | Delete line into void register  |
+
+*In both visual and normal mode*
 
 ## Text manipulation
 
 *In visual mode*
 
-| Key | Description            |
-| --- | ---------------------- |
-| `K` | Move current line up   |
-| `J` | Move current line down |
+| Key         | Description                            |
+| ----------- | -------------------------------------- |
+| `<leader>p` | Paste without overwriting the register |
+| `>`         | indents while preserving selection     |
+| `<`         | dedents while preserving selection     |
+| `K`         | Move current line up                   |
+| `J`         | Move current line down                 |

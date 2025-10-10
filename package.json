@@ -9,7 +9,7 @@
   },
   "description": "Keymaps for VSCodeVim extension to provide a more authentic vim experience in VS Code. Inspired by kickstart.nvim",
   "license": "MIT",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "icon": "assets/logo.png",
   "engines": {
     "vscode": "^1.93.0"
@@ -134,6 +134,10 @@
         {
           "before": [ "<leader>", "y" ],
           "after": [ "\"", "+", "y" ]
+        },
+        {
+          "before": [ "<leader>", "y", "y" ],
+          "after": [ "\"", "+", "y", "y" ]
         },
         {
           "before": [ "<leader>", "Y" ],
@@ -449,6 +453,11 @@
         "key": "ctrl+w o",
         "command": "workbench.action.toggleMaximizeEditorGroup",
         "when": "editorPartMaximizedEditorGroup || editorPartMultipleEditorGroups"
+      },
+      {
+        "key": "ctrl+.",
+        "command": "editor.action.quickFix",
+        "when": "editorHasCodeActionsProvider && textInputFocus && !editorReadonly"
       }
     ]
   }
