@@ -1,6 +1,6 @@
 # Vim Enhanced
 
-Keymaps for [Vim extension](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim) to provide a more native Vim experience in VS Code. Inspired by Neovim configurations.
+Keymaps for [Vim extension](https://marketplace.visualstudio.com/items?itemName=vscodevim.vim) to provide a more authentic vim experience in VS Code. Inspired by kickstart.nvim.
 
 ## Installation
 

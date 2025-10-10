@@ -7,9 +7,9 @@
     "email": "mihaicaragheorghe96@gmail.com",
     "url": "https://github.com/mihaicaragheorghe"
   },
-  "description": "Keymaps for VSCodeVim extension to provide a more native Vim experience in VS Code. Inspired by Neovim configurations. ",
+  "description": "Keymaps for VSCodeVim extension to provide a more authentic vim experience in VS Code. Inspired by kickstart.nvim",
   "license": "MIT",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "icon": "assets/logo.png",
   "engines": {
     "vscode": "^1.93.0"
