@@ -26,6 +26,7 @@ jobs:
 
     - name: Package and publish extension
       run: vsce publish --pat ${{ secrets.VSCE_TOKEN }}
+      continue-on-error: true
       env:
         NODE_ENV: production
 
