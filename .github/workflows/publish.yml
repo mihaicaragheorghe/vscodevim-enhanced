@@ -28,3 +28,8 @@ jobs:
       run: vsce publish --pat ${{ secrets.VSCE_TOKEN }}
       env:
         NODE_ENV: production
+
+    - name: Publish to Open VSX Registry
+      run: npx ovsx publish -p ${{ secrets.OPEN_VSX_TOKEN }}
+      env:
+        NODE_ENV: production
