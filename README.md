@@ -4,7 +4,7 @@ Keymaps for [Vim extension](https://marketplace.visualstudio.com/items?itemName=
 
 ## Installation
 
-Install via [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=mcaragheorghe.vim-enhanced)
+Install via [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=mcaragheorghe.vim-enhanced) or [OpenVSX](https://open-vsx.org/extension/mcaragheorghe/vim-enhanced).
 
 ## Configuration defaults
 

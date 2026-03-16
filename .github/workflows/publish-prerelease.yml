@@ -1,12 +1,12 @@
-name: Publish
+name: Publish Prerelease
 
 on:
   push:
     branches:
-      - main
+      - prerelease
 
 jobs:
-  publish:
+  publish-prerelease:
     runs-on: ubuntu-latest
 
     steps:
@@ -18,8 +18,8 @@ jobs:
       with:
         node-version: '24'
 
-    - name: Install vsce (Visual Studio Code Extension Manager)
-      run: npm install -g vsce
+    - name: Install vsce Extension Manager
+      run: npm install -g @vscode/vsce
 
     - name: Install dependencies
       run: npm ci
@@ -27,13 +27,14 @@ jobs:
     - name: Compile TypeScript
       run: npm run compile
 
-    - name: Package and publish extension
-      run: vsce publish --pat ${{ secrets.VSCE_TOKEN }}
+    - name: Publish to VS Code Marketplace
+      run: vsce publish --pre-release --pat ${{ secrets.VSCE_TOKEN }}
       continue-on-error: true
       env:
         NODE_ENV: production
 
-    - name: Publish to Open VSX Registry
-      run: npx ovsx publish --pat ${{ secrets.OPEN_VSX_TOKEN }}
+    - name: Publish to Open VSX Registry (prerelease)
+      run: npx ovsx publish --pre-release --pat ${{ secrets.OPEN_VSX_TOKEN }}
+      continue-on-error: true
       env:
         NODE_ENV: production
