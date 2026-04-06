@@ -9,15 +9,13 @@ Install via [Visual Studio Marketplace](https://marketplace.visualstudio.com/ite
 ## Configuration defaults
 
 The default leader key is `Space`.
-Relative lines are enabled by default.
 
 ```json
 {
+  "editor.cursorSurroundingLines": 10,
   "vim.leader": "space",
   "vim.showcmd": true,
   "vim.showmodename": true,
-  "editor.lineNumbers": "relative",
-  "editor.cursorSurroundingLines": 10,
   "vim.highlightedyank.enable": true,
   "vim.highlightedyank.color": "#a9dc7660",
   "vim.ignorecase": true,
