@@ -24,6 +24,9 @@ jobs:
     - name: Install dependencies
       run: npm ci
 
+    - name: Test and compile
+      run: npm test
+
     - name: Package and publish extension
       run: vsce publish --pat ${{ secrets.VSCE_TOKEN }}
       continue-on-error: true

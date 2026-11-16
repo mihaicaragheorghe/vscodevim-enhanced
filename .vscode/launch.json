@@ -9,6 +9,8 @@
 			"name": "Extension",
 			"type": "extensionHost",
 			"request": "launch",
+			"preLaunchTask": "npm: compile",
+			"outFiles": ["${workspaceFolder}/out/**/*.js"],
 			"args": [
 				"--extensionDevelopmentPath=${workspaceFolder}"
 			]

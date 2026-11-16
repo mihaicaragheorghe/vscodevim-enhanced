@@ -149,59 +149,62 @@ Additionally, `ctrl+d`, `ctrl+u`, `n` and `N`(when searching) will also center t
 
 ### Vim mappings in settings.json
 
-Run **Preferences: Open User Settings (JSON)** and add individual overrides to `vim.normalModeKeyBindings`, `vim.visualModeKeyBindings`, or `vim.insertModeKeyBindings`. These mappings take priority over this extension's nonrecursive defaults, so other supplied mappings remain available. Merge examples into your existing settings and mapping arrays.
+Add mappings to the `vimEnhanced.*` arrays in **Preferences: Open User Settings (JSON)**. These are merged with this extension's defaults, so unrelated defaults remain available. Changes apply automatically.
 
-For example, change normal-mode `<leader>f` to format only the selection, visual-mode `<leader>y` to use VS Code's copy command, and insert-mode `<C-p>` to trigger suggestions:
+Each of the three modes supports recursive and non-recursive mappings:
+
+| Mode | Recursive | Non-recursive |
+| ---- | --------- | ------------- |
+| Normal | `vimEnhanced.normalModeKeyBindings` | `vimEnhanced.normalModeKeyBindingsNonRecursive` |
+| Visual | `vimEnhanced.visualModeKeyBindings` | `vimEnhanced.visualModeKeyBindingsNonRecursive` |
+| Insert | `vimEnhanced.insertModeKeyBindings` | `vimEnhanced.insertModeKeyBindingsNonRecursive` |
+
+For example, restore native `x`, change `<leader>f` to format the selection, and use `jj` to leave insert mode:
 
 ```json
 {
-  "vim.normalModeKeyBindings": [
+  "vimEnhanced.normalModeKeyBindingsNonRecursive": [
+    { "before": ["x"], "after": ["x"] },
     {
       "before": ["<leader>", "f"],
       "commands": ["editor.action.formatSelection"]
     }
   ],
-  "vim.visualModeKeyBindings": [
-    {
-      "before": ["<leader>", "y"],
-      "commands": ["editor.action.clipboardCopyAction"]
-    }
-  ],
-  "vim.insertModeKeyBindings": [
-    {
-      "before": ["<C-p>"],
-      "commands": ["editor.action.triggerSuggest"]
-    }
+  "vimEnhanced.insertModeKeyBindingsNonRecursive": [
+    { "before": ["j", "j"], "after": ["<Esc>"] }
   ]
 }
 ```
 
-To disable a mapping, use an empty `after` array. To restore a native Vim action such as `x` (which this extension sends to the black-hole register), map the key to itself. This example also moves formatting from `<leader>f` to `<leader>F`:
+Recursive mappings allow keys in `after` to trigger other mappings. Non-recursive mappings execute their keys without triggering further mappings. For example, these recursive mappings make `<leader>q` run the mapping for `<leader>f`:
 
 ```json
 {
-  "vim.normalModeKeyBindings": [
-    {
-      "before": ["<leader>", "f"],
-      "after": []
-    },
-    {
-      "before": ["<leader>", "F"],
-      "commands": ["editor.action.formatDocument"]
-    },
-    {
-      "before": ["x"],
-      "after": ["x"]
-    }
+  "vimEnhanced.normalModeKeyBindings": [
+    { "before": ["<leader>", "q"], "after": ["<leader>", "f"] }
   ]
 }
 ```
 
-An empty `after` consumes the mapping without running an action; it does not restore the key's native action. Remove an override to restore this extension's default. Overrides apply only to the specified mode and key sequence.
+Mappings accept `before`, `after`, `commands`, and `silent`, using [VSCodeVim's mapping format](https://github.com/VSCodeVim/Vim#key-remapping). Commands can be strings or objects such as `{ "command": "example.command", "args": ["value"] }`. These arrays do not evaluate `when` conditions; use `keybindings.json` for contextual VS Code shortcuts.
 
-These user mapping arrays are recursive: keys in `after` can trigger other mappings. VSCodeVim handles the same-key `x` example by executing its first key without remapping it again. See [VSCodeVim's remapping documentation](https://github.com/VSCodeVim/Vim#key-remapping) for more details.
+Custom mappings replace defaults with the identical `before` token sequence, even across recursive and non-recursive arrays. The last duplicate within an array wins. If both custom arrays contain the same sequence, the recursive mapping wins. Equivalent spellings, such as `<leader>` and a literal space, are not deduplicated by this extension; use consistent notation.
 
-This extension stores its defaults in the three `vim.*ModeKeyBindingsNonRecursive` arrays. Setting one of those arrays yourself replaces that mode's entire nonrecursive defaults array, even if you set it to `[]`. Use the arrays shown above to preserve unrelated defaults.
+To consume a mapping without an action, use `"after": []`. To restore a native Vim action, map the sequence to itself in a **non-recursive** array. Remove a custom mapping to restore its extension default; setting the custom arrays to `[]` restores all defaults for that mode.
+
+#### Existing mappings and generated settings
+
+The runtime writes merged mappings into VSCodeVim's six `vim.*ModeKeyBindings` / `vim.*ModeKeyBindingsNonRecursive` user settings. Edit `vimEnhanced.*` as the inputs. Settings apply to the current VS Code profile; workspace-specific mappings are not supported.
+
+If a mode already has explicit `vim.*` mapping arrays, the extension leaves that entire mode unchanged and shows a migration warning:
+
+1. Move your custom mappings to the matching `vimEnhanced.*` arrays. Merge them with any custom mappings already there.
+2. Remove both explicit `vim.*` mapping arrays for that mode from User Settings (JSON).
+3. The runtime then generates the merged arrays automatically.
+
+If you manually edit a generated array, that mode is also left untouched until you migrate it. When migrating generated settings, move only the mappings you want to customize; copying defaults into the custom arrays turns them into explicit overrides.
+
+When a mode has no custom mappings, the runtime removes its generated overrides and the extension's manifest defaults take effect again. Disabling or uninstalling the extension does not remove generated user settings: remove the six normal, visual, and insert `vim.*ModeKeyBindings` / `vim.*ModeKeyBindingsNonRecursive` arrays yourself to clean them up. Other Vim settings and VS Code shortcuts are unaffected by synchronization.
 
 ### VS Code shortcuts in keybindings.json
 
@@ -237,3 +240,7 @@ If VSCodeVim captures a control key that you want VS Code to handle, add it to `
 ```
 
 This delegates the key to VS Code and bypasses Vim mappings for that key. Then configure its action in `keybindings.json`. Other `vim.handleKeys` defaults remain in effect.
+
+## Development
+
+Run `npm ci`, then `npm test` to compile the TypeScript runtime and run the tests. Press F5 to compile and launch an Extension Development Host with the extension loaded. Packaging runs compilation automatically through `vscode:prepublish`.
