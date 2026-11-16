@@ -10,7 +10,7 @@
   "description": "Keymaps for VSCodeVim extension to provide a more authentic vim experience in VS Code. Inspired by kickstart.nvim",
   "license": "MIT",
   "version": "1.2.0",
-  "icon": "assets/logo.png",
+  "icon": "assets/logo.jpg",
   "engines": {
     "vscode": "^1.93.0"
   },
