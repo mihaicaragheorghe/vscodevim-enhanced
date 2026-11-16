@@ -144,3 +144,96 @@ Additionally, `ctrl+d`, `ctrl+u`, `n` and `N`(when searching) will also center t
 | `<`         | dedents while preserving selection     |
 | `K`         | Move current line up                   |
 | `J`         | Move current line down                 |
+
+## Customizing keybindings
+
+### Vim mappings in settings.json
+
+Run **Preferences: Open User Settings (JSON)** and add individual overrides to `vim.normalModeKeyBindings`, `vim.visualModeKeyBindings`, or `vim.insertModeKeyBindings`. These mappings take priority over this extension's nonrecursive defaults, so other supplied mappings remain available. Merge examples into your existing settings and mapping arrays.
+
+For example, change normal-mode `<leader>f` to format only the selection, visual-mode `<leader>y` to use VS Code's copy command, and insert-mode `<C-p>` to trigger suggestions:
+
+```json
+{
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["<leader>", "f"],
+      "commands": ["editor.action.formatSelection"]
+    }
+  ],
+  "vim.visualModeKeyBindings": [
+    {
+      "before": ["<leader>", "y"],
+      "commands": ["editor.action.clipboardCopyAction"]
+    }
+  ],
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["<C-p>"],
+      "commands": ["editor.action.triggerSuggest"]
+    }
+  ]
+}
+```
+
+To disable a mapping, use an empty `after` array. To restore a native Vim action such as `x` (which this extension sends to the black-hole register), map the key to itself. This example also moves formatting from `<leader>f` to `<leader>F`:
+
+```json
+{
+  "vim.normalModeKeyBindings": [
+    {
+      "before": ["<leader>", "f"],
+      "after": []
+    },
+    {
+      "before": ["<leader>", "F"],
+      "commands": ["editor.action.formatDocument"]
+    },
+    {
+      "before": ["x"],
+      "after": ["x"]
+    }
+  ]
+}
+```
+
+An empty `after` consumes the mapping without running an action; it does not restore the key's native action. Remove an override to restore this extension's default. Overrides apply only to the specified mode and key sequence.
+
+These user mapping arrays are recursive: keys in `after` can trigger other mappings. VSCodeVim handles the same-key `x` example by executing its first key without remapping it again. See [VSCodeVim's remapping documentation](https://github.com/VSCodeVim/Vim#key-remapping) for more details.
+
+This extension stores its defaults in the three `vim.*ModeKeyBindingsNonRecursive` arrays. Setting one of those arrays yourself replaces that mode's entire nonrecursive defaults array, even if you set it to `[]`. Use the arrays shown above to preserve unrelated defaults.
+
+### VS Code shortcuts in keybindings.json
+
+For shortcuts such as `ctrl+h` navigation or Explorer actions, run **Preferences: Open Keyboard Shortcuts**. Find the command and use **Change Keybinding** or **Remove Keybinding**. For entries supplied by this extension, search `@ext:mcaragheorghe.vim-enhanced`.
+
+Alternatively, run **Preferences: Open Keyboard Shortcuts (JSON)**. For example, move the Explorer's `r` rename shortcut to `ctrl+alt+r` by removing the original binding and adding a replacement with the same `when` condition:
+
+```json
+[
+  {
+    "key": "r",
+    "command": "-renameFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  },
+  {
+    "key": "ctrl+alt+r",
+    "command": "renameFile",
+    "when": "explorerViewletVisible && filesExplorerFocus && !explorerResourceIsRoot && !explorerResourceReadonly && !inputFocus"
+  }
+]
+```
+
+Each shortcut entry is independent: the separate `shift+r` rename shortcut remains available. Preserve the original `when` condition when moving a contextual shortcut so it runs in the intended place. See [VS Code's keyboard shortcut documentation](https://code.visualstudio.com/docs/configure/keybindings) for override and removal rules.
+
+If VSCodeVim captures a control key that you want VS Code to handle, add it to `vim.handleKeys` in `settings.json`:
+
+```json
+{
+  "vim.handleKeys": {
+    "<C-p>": false
+  }
+}
+```
+
+This delegates the key to VS Code and bypasses Vim mappings for that key. Then configure its action in `keybindings.json`. Other `vim.handleKeys` defaults remain in effect.
